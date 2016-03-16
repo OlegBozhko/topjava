@@ -1,18 +1,23 @@
 package ru.javawebinar.topjava.repository.mock;
 
+import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.repository.UserMealRepository;
 import ru.javawebinar.topjava.util.UserMealsUtil;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 /**
  * GKislin
  * 15.09.2015.
  */
+@Repository
 public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     private Map<Integer, UserMeal> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
@@ -31,8 +36,8 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     }
 
     @Override
-    public void delete(int id) {
-        repository.remove(id);
+    public boolean delete(int id) {
+            return repository.remove(id) != null;
     }
 
     @Override
@@ -42,7 +47,17 @@ public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
 
     @Override
     public Collection<UserMeal> getAll() {
-        return repository.values();
+        return repository.values().stream()
+                .sorted((o1, o2) -> o1.getDateTime().compareTo(o2.getDateTime()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserMeal> getByDate(LocalDate startDate, LocalDate endDate) {
+        return repository.values().stream()
+                .filter(um -> um.getDateTime().toLocalDate().compareTo(startDate) >= 0 && um.getDateTime().toLocalDate().compareTo(endDate) <= 0)
+                .sorted((o1, o2) -> o1.getDateTime().compareTo(o2.getDateTime()))
+                .collect(Collectors.toList());
     }
 }
 
