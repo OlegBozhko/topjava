@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.repository.UserMealRepository;
+import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,8 +35,7 @@ public class JpaUserMealRepositoryImpl implements UserMealRepository {
             userMeal.setUser(ref);
             return em.merge(userMeal);
         } else {
-            userMeal.setUser(ref);
-            return em.merge(userMeal);
+            throw new NotFoundException(userMeal + "with userId" + userId + "not found");
         }
     }
 

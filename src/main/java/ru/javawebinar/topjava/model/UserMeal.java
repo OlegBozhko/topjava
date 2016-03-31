@@ -1,10 +1,11 @@
 package ru.javawebinar.topjava.model;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 /**
@@ -25,8 +26,8 @@ public class UserMeal extends BaseEntity {
     public static final String ALL_SORTED = "UserMeal.getAllSorted";
     public static final String GET_BETWEEN = "UserMeal.getBetween";
 
-    @Column(name = "date_time", unique = true)
-    @NotEmpty
+    @Column(name = "date_time")
+    @NotNull
     private LocalDateTime dateTime;
 
     @Column(name = "description")
@@ -34,7 +35,6 @@ public class UserMeal extends BaseEntity {
     private String description;
 
     @Column(name = "calories")
-    @NotEmpty
     @Digits(fraction = 0, integer = 4)
     protected int calories;
 
