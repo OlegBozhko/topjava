@@ -10,5 +10,5 @@ public class Profiles {
             HSQLDB = "hsqldb",
             JDBC = "jdbc",
             JPA = "jpa",
-            DATA_JPA = "data_jpa";
+            DATAJPA = "datajpa";
 }
