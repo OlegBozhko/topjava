@@ -2,13 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
+<jsp:include page="fragments/headTag.jsp"/>
 <head>
     <title>Meal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
 <section>
-    <h2><a href="">Home</a></h2>
+    <h2><a href="index.jsp">Home</a></h2>
     <h3>Edit meal</h3>
     <hr>
     <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.UserMeal" scope="request"/>
