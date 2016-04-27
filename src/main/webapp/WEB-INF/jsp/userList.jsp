@@ -11,8 +11,8 @@
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
 <div class="jumbotron">
-    <div class="container">
-        <div class="shadow">
+            <div class="container">
+                <div class="shadow">
             <h3><fmt:message key="users.title"/></h3>
 
             <div class="view-box">
