@@ -97,8 +97,8 @@
                         <label for="datetime" class="control-label col-xs-3">Date</label>
 
                         <div class="col-xs-9">
-                            <input type="datetime-local" class="form-control" id="datetime"
-                                   name="datetime" placeholder="Date">
+                            <input type="datetime-local" class="form-control" id="dateTime"
+                                   name="dateTime" placeholder="Date">
                         </div>
                     </div>
                     <div class="form-group">
