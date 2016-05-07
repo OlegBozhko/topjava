@@ -8,6 +8,6 @@ import ru.javawebinar.topjava.to.MealTo;
  */
 public class MealUtil {
     public static UserMeal createFromTo(MealTo newMeal) {
-        return new UserMeal(newMeal.getLocalDateTime(), newMeal.getDescription(), newMeal.getCalories());
+        return new UserMeal(newMeal.getDateTime(), newMeal.getDescription(), newMeal.getCalories());
     }
 }

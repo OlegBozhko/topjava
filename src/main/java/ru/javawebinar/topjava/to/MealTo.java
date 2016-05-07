@@ -17,7 +17,7 @@ public class MealTo implements Serializable {
 
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    protected LocalDateTime localDateTime;
+    protected LocalDateTime dateTime;
 
     @NotEmpty
     @Size(min = 5, max = 64)
@@ -31,11 +31,11 @@ public class MealTo implements Serializable {
     }
 
     public MealTo(int id,
-                  LocalDateTime localDateTime,
+                  LocalDateTime dateTime,
                   String description,
                   int calories) {
         this.id = id;
-        this.localDateTime = localDateTime;
+        this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
     }
@@ -48,12 +48,12 @@ public class MealTo implements Serializable {
         this.id = (id == null ? 0 : id);
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public String getDescription() {
@@ -76,7 +76,7 @@ public class MealTo implements Serializable {
     public String toString() {
         return "MealTo{" +
                 "id=" + id +
-                ", localDateTime=" + localDateTime +
+                ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 ", calories=" + calories +
                 '}';
